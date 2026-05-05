@@ -1,7 +1,6 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 
-// Kategorie k prozkoumání
 const CATEGORIES = [
     { name: 'Granule pro psy', url: 'https://www.krmivo-platinum.cz/granule-c130/' },
     { name: 'Granule pro psy (alt)', url: 'https://www.krmivo-platinum.cz/granule-pro-psy-c77/' },
@@ -44,11 +43,9 @@ async function scrape() {
                 timeout: 60000
             });
             
-            // Počkej na načtení
             console.log('   ⏳ Čekám na produkty...');
             await page.waitForTimeout(3000);
             
-            // SCROLLOVÁNÍ pro lazy loading obrázků
             console.log('   📜 Scrolluji pro obrázky...');
             await page.evaluate(async () => {
                 await new Promise((resolve) => {
@@ -66,10 +63,8 @@ async function scrape() {
                 });
             });
             
-            // Počkej na načtení obrázků
             await page.waitForTimeout(5000);
             
-            // Najdi produkty
             const products = await page.evaluate((catName) => {
                 const items = [];
                 const elements = document.querySelectorAll('.ProductView, div[class*="ProductView"]');
@@ -85,17 +80,23 @@ async function scrape() {
                     const link = el.querySelector('a');
                     const url = link?.href;
                     
-                    // Najdi obrázek — zkus více selektorů
                     let image = null;
                     const img = el.querySelector('img');
                     if (img) {
-                        // Použij data-src nebo src (lazy loading)
                         image = img.dataset?.src || img.src;
                     }
                     
-                    // Přeskoč prázdné GIFy
                     if (image && image.includes('data:image/gif')) {
                         image = null;
+                    }
+                    
+                    // FILTR: Přeskoč vzorky
+                    const lowerName = (name || '').toLowerCase();
+                    if (lowerName.includes('vzorek') || 
+                        lowerName.includes('50g') || 
+                        lowerName.includes('50 g') ||
+                        lowerName.includes('test')) {
+                        return;
                     }
                     
                     if (name && price) {
@@ -117,7 +118,6 @@ async function scrape() {
             console.log(`   ✅ ${products.length} produktů`);
             allProducts.push(...products);
             
-            // Počkej mezi kategoriemi
             await page.waitForTimeout(3000);
             
         } catch (err) {
@@ -127,7 +127,6 @@ async function scrape() {
     
     await browser.close();
     
-    // Ulož výsledky
     const output = {
         scrapedAt: new Date().toISOString(),
         source: 'krmivo-platinum.cz',
@@ -139,7 +138,6 @@ async function scrape() {
     fs.writeFileSync('products.json', JSON.stringify(output, null, 2));
     console.log(`\n🎉 Hotovo! ${allProducts.length} produktů uloženo do products.json`);
     
-    // Statistika obrázků
     const withImages = allProducts.filter(p => p.image && p.image.startsWith('http')).length;
     console.log(`📸 Produktů s obrázkem: ${withImages}/${allProducts.length}`);
 }
