@@ -1,0 +1,12 @@
+{
+  "name": "platinum-scraper",
+  "version": "1.0.0",
+  "description": "Scraper pro krmivo-platinum.cz",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
