@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-07-27T10:03:53.274Z",
+  "scrapedAt": "2026-07-28T08:46:40.723Z",
   "source": "krmivo-platinum.cz",
   "totalProducts": 72,
   "categories": 8,
@@ -11,7 +11,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-hypoallergenic-p4059/?cid=130",
       "image": "https://cdn.krmivo-platinum.cz/images/0/85984093f4650819/1/platinum-vetactive-hypoallergenic.png?hash=803428813",
       "category": "Granule pro psy",
-      "scrapedAt": "2026-07-27T10:02:05.286Z"
+      "scrapedAt": "2026-07-28T08:44:53.669Z"
     },
     {
       "name": "Platinum VETACTIVE Light",
@@ -20,7 +20,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-light-p4105/?cid=130",
       "image": "https://cdn.krmivo-platinum.cz/images/0/6eb08c992bc7a239/1/platinum-vetactive-light.png?hash=803428813",
       "category": "Granule pro psy",
-      "scrapedAt": "2026-07-27T10:02:05.286Z"
+      "scrapedAt": "2026-07-28T08:44:53.669Z"
     },
     {
       "name": "Platinum VETACTIVE Senior",
@@ -29,7 +29,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-senior-p4106/?cid=130",
       "image": "https://cdn.krmivo-platinum.cz/images/0/016e3a3b1e8a2f7f/1/platinum-vetactive-senior.png?hash=803428813",
       "category": "Granule pro psy",
-      "scrapedAt": "2026-07-27T10:02:05.286Z"
+      "scrapedAt": "2026-07-28T08:44:53.670Z"
     },
     {
       "name": "Platinum VETACTIVE Sensitive",
@@ -38,7 +38,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-sensitive-p4839/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/ba01de55a8aa32d6/1/platinum-vetactive-sensitive.png?hash=803428813",
       "category": "Granule pro psy",
-      "scrapedAt": "2026-07-27T10:02:05.286Z"
+      "scrapedAt": "2026-07-28T08:44:53.670Z"
     },
     {
       "name": "Platinum Adult Chicken - Kuřecí",
@@ -47,7 +47,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-chicken-kureci-p4054/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/28f42ca36c9dc380/1/platinum-adult-chicken-kureci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum MINI Adult Chicken - Kuřecí",
@@ -56,7 +56,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-chicken-kureci-p4894/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/3efde684a5fcc747/1/platinum-mini-adult-chicken-kureci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum Adult Beef - Hovězí",
@@ -65,7 +65,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-beef-hovezi-p4055/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/24fa77d83dd727c7/1/platinum-adult-beef-hovezi.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum MINI Adult Beef - Hovězí",
@@ -74,7 +74,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-beef-hovezi-p4895/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/abed907bcc5e386d/1/platinum-mini-adult-beef-hovezi.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum Adult Iberico - Kančí",
@@ -83,7 +83,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-iberico-kanci-p4100/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/ec23c8ba3aabdff5/1/platinum-adult-iberico-kanci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum MINI Adult Iberico - Kančí",
@@ -92,7 +92,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-iberico-kanci-p4896/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2d55559fe7c8f972/1/platinum-mini-adult-iberico-kanci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum Adult Lamb - Jehněčí",
@@ -101,7 +101,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-lamb-jehneci-p4101/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/322bed8c99d2fbb5/1/platinum-adult-lamb-jehneci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum MINI Adult Lamb - Jehněčí",
@@ -110,7 +110,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-lamb-jehneci-p4897/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/72903966b6e4fdc1/1/platinum-mini-adult-lamb-jehneci.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum Puppy Chicken - Kuřecí pro štěňata",
@@ -119,7 +119,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-puppy-chicken-kureci-pro-stenata-p4102/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2e8bfe76e5ace616/1/platinum-puppy-chicken-kureci-pro-stenata.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum MINI Puppy Chicken - Kuřecí pro štěňata",
@@ -128,7 +128,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-puppy-chicken-kureci-pro-stenata-p4898/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/e597fc024bb9294f/1/platinum-mini-puppy-chicken-kureci-pro-stenata.jpg?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum VETACTIVE Hypoallergenic",
@@ -137,7 +137,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-hypoallergenic-p4059/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/85984093f4650819/1/platinum-vetactive-hypoallergenic.png?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum VETACTIVE Light",
@@ -146,7 +146,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-light-p4105/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/6eb08c992bc7a239/1/platinum-vetactive-light.png?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum VETACTIVE Senior",
@@ -155,7 +155,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-senior-p4106/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/016e3a3b1e8a2f7f/1/platinum-vetactive-senior.png?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum VETACTIVE Sensitive",
@@ -164,7 +164,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-sensitive-p4839/?cid=77",
       "image": "https://cdn.krmivo-platinum.cz/images/0/ba01de55a8aa32d6/1/platinum-vetactive-sensitive.png?hash=803428813",
       "category": "Granule pro psy (alt)",
-      "scrapedAt": "2026-07-27T10:02:20.462Z"
+      "scrapedAt": "2026-07-28T08:45:08.842Z"
     },
     {
       "name": "Platinum Adult Chicken - Kuřecí",
@@ -173,7 +173,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-chicken-kureci-p4054/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/28f42ca36c9dc380/1/platinum-adult-chicken-kureci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.382Z"
     },
     {
       "name": "Platinum Adult Beef - Hovězí",
@@ -182,7 +182,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-beef-hovezi-p4055/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/24fa77d83dd727c7/1/platinum-adult-beef-hovezi.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum Adult Iberico - Kančí",
@@ -191,7 +191,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-iberico-kanci-p4100/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/ec23c8ba3aabdff5/1/platinum-adult-iberico-kanci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum Adult Lamb - Jehněčí",
@@ -200,7 +200,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-adult-lamb-jehneci-p4101/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/322bed8c99d2fbb5/1/platinum-adult-lamb-jehneci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum Puppy Chicken - Kuřecí pro štěňata",
@@ -209,7 +209,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-puppy-chicken-kureci-pro-stenata-p4102/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2e8bfe76e5ace616/1/platinum-puppy-chicken-kureci-pro-stenata.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MINI Adult Chicken - Kuřecí",
@@ -218,7 +218,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-chicken-kureci-p4894/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/3efde684a5fcc747/1/platinum-mini-adult-chicken-kureci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MINI Adult Beef - Hovězí",
@@ -227,7 +227,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-beef-hovezi-p4895/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/abed907bcc5e386d/1/platinum-mini-adult-beef-hovezi.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MINI Adult Iberico - Kančí",
@@ -236,7 +236,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-iberico-kanci-p4896/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2d55559fe7c8f972/1/platinum-mini-adult-iberico-kanci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MINI Adult Lamb - Jehněčí",
@@ -245,7 +245,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-adult-lamb-jehneci-p4897/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/72903966b6e4fdc1/1/platinum-mini-adult-lamb-jehneci.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MINI Puppy Chicken - Kuřecí pro štěňata",
@@ -254,7 +254,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-mini-puppy-chicken-kureci-pro-stenata-p4898/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/e597fc024bb9294f/1/platinum-mini-puppy-chicken-kureci-pro-stenata.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum Fit-Sticks Chicken & Lamb - Kuře & Jehně tyčinky",
@@ -263,7 +263,7 @@
       "url": "https://www.krmivo-platinum.cz/platinumfit-sticks-chicken-lamb-kure-jehne-tycinky-p4203/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/77f72fb44f191f4e/1/platinum-fit-sticks-chicken-lamb-kure-jehne-tycinky.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum Fit-Sticks Chicken & Rabbit - Kuře & Králík tyčinky",
@@ -272,7 +272,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-fit-sticks-chicken-rabbit-kure-kralik-tycinky-p4204/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/0acefd0ac9a10328/1/platinum-fit-sticks-chicken-rabbit-kure-kralik-tycinky.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum STARS Turkey 185g",
@@ -281,7 +281,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-stars-turkey-185g-p4419/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/588a62b935ba2adf/1/platinum-stars-turkey-185g.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum STARS Salmon 185g",
@@ -290,7 +290,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-stars-salmon-185g-p4420/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/fb0ffd8b0ff12a73/1/platinum-stars-salmon-185g.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum STARS Iberico 185g",
@@ -299,7 +299,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-stars-iberico-185g-p4421/?cid=76",
       "image": "https://cdn.krmivo-platinum.cz/images/0/febe9955a857b795/1/platinum-stars-iberico-185g.jpg?hash=803428813",
       "category": "Pro psy",
-      "scrapedAt": "2026-07-27T10:02:36.169Z"
+      "scrapedAt": "2026-07-28T08:45:24.383Z"
     },
     {
       "name": "Platinum MeatCrisp Adult Chicken - Kuře pro dospělé kočky",
@@ -308,7 +308,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-adult-chicken-kure-pro-dospele-kocky-p4056/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/6f9a56b79fc880ae/1/platinum-meatcrisp-adult-chicken-kure-pro-dospele-kocky.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum MeatCrisp Kitten Chicken - Kuře pro koťata",
@@ -317,7 +317,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-kitten-chicken-kure-pro-kotata-p4057/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/82264cea320de155/1/platinum-meatcrisp-kitten-chicken-kure-pro-kotata.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum MeatCrisp Sterilised Chicken - Kuře pro kastrované kočky",
@@ -326,7 +326,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-sterilised-chicken-kure-pro-kastrovane-kocky-p4058/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/e1c1140e0c5095d2/1/platinum-meatcrisp-sterilised-chicken-kure-pro-kastrovane-kocky.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum MeatCrisp Adult Fish - Ryba pro dospělé kočky",
@@ -335,7 +335,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-adult-fish-ryba-pro-dospele-kocky-p4633/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/bd167267bc00d9ae/1/platinum-meatcrisp-adult-fish-ryba-pro-dospele-kocky.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum MeatCrisp Kitten Fish - Ryba pro koťata",
@@ -344,7 +344,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-kitten-fish-ryba-pro-kotata-p4634/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/8e44df18ef0c3350/1/platinum-meatcrisp-kitten-fish-ryba-pro-kotata.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum MeatCrisp Sterilised Fish - Ryba pro kastrované kočky",
@@ -353,7 +353,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-sterilised-fish-ryba-pro-kastrovane-kocky-p4635/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/3f40ca13dc2df006/1/platinum-meatcrisp-sterilised-fish-ryba-pro-kastrovane-kocky.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum Hojivý balzám",
@@ -362,7 +362,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-hojivy-balzam-p278/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2f086a89c8cced34/1/platinum-hojivy-balzam.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum ORAL CLEAN & CARE Forte",
@@ -371,7 +371,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-oral-clean-care-forte-p5041/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/482397b38d52a7e1/1/platinum-oral-clean-care-forte.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum ORAL CLEAN & CARE Classic",
@@ -380,7 +380,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-oral-clean-care-classic-p5042/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/f864874c9f249659/1/platinum-oral-clean-care-classic.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Miska pro kočky Simon´s CAT",
@@ -389,7 +389,7 @@
       "url": "https://www.krmivo-platinum.cz/miska-pro-kocky-simon-s-cat-p4004/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/9b92222ed1181ac6/1/miska-pro-kocky-simon-s-cat.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Hračka pro kočky s pírkem",
@@ -398,7 +398,7 @@
       "url": "https://www.krmivo-platinum.cz/hracka-pro-kocky-s-pirkem-p4841/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/f62aec63286f872b/1/hracka-pro-kocky-s-pirkem.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Dřevěná hračka na MeatCrisp",
@@ -407,7 +407,7 @@
       "url": "https://www.krmivo-platinum.cz/drevena-hracka-na-meatcrisp-p4930/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/d5f6787315252ccd/1/drevena-hracka-na-meatcrisp.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Odměrka Platinum MeatCrisp",
@@ -416,7 +416,7 @@
       "url": "https://www.krmivo-platinum.cz/odmerka-platinum-meatcrisp-p4940/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2933a533e5f06a03/1/odmerka-platinum-meatcrisp.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Podložka pod misku pro kočky",
@@ -425,25 +425,25 @@
       "url": "https://www.krmivo-platinum.cz/podlozka-pod-misku-pro-kocky-p4990/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/3ca4e6bbcc8d53bc/1/podlozka-pod-misku-pro-kocky.jpg?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
-      "name": "Plovet Premium Podestýlka Bentonite Ultra White Carbon 10 L – Síla aktivního uhlí",
+      "name": "Plovet Premium Podestýlka Bentonite Ultra White Carbon 10 L",
       "price": "169 Kč",
       "stock": "Skladem",
-      "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-bentonite-ultra-white-carbon-10-l-sila-aktivniho-uhli-p5650/?cid=75",
-      "image": "https://cdn.krmivo-platinum.cz/images/0/f585ee074ba2e1fd/1/plovet-premium-podestylka-bentonite-ultra-white-carbon-10-l-sila-aktivniho-uhli.png?hash=803428813",
+      "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-bentonite-ultra-white-carbon-10-l-p5650/?cid=75",
+      "image": "https://cdn.krmivo-platinum.cz/images/0/f585ee074ba2e1fd/1/plovet-premium-podestylka-bentonite-ultra-white-carbon-10-l.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
-      "name": "Plovet Premium Podestýlka Bentonite Ultra White Baby 10 L",
+      "name": "Plovet Premium Podestýlka Bentonite Ultra White Baby Powder 10 L",
       "price": "169 Kč",
       "stock": "Skladem",
-      "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-bentonite-ultra-white-baby-10-l-p5651/?cid=75",
-      "image": "https://cdn.krmivo-platinum.cz/images/0/2a28ec19b6e4f012/1/plovet-premium-podestylka-bentonite-ultra-white-baby-10-l.png?hash=803428813",
+      "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-bentonite-ultra-white-baby-powder-10-l-p5651/?cid=75",
+      "image": "https://cdn.krmivo-platinum.cz/images/0/2a28ec19b6e4f012/1/plovet-premium-podestylka-bentonite-ultra-white-baby-powder-10-l.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Plovet Premium Podestýlka Bentonite Ultra White Fresh 10 L",
@@ -452,7 +452,7 @@
       "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-bentonite-ultra-white-fresh-10-l-p5652/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/91e44e96cfe0c707/1/plovet-premium-podestylka-bentonite-ultra-white-fresh-10-l.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Plovet Premium Podestýlka Silica Lavender 16L",
@@ -461,7 +461,7 @@
       "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-silica-lavender-16l-p5654/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/8c4bb996cc6ee111/1/plovet-premium-podestylka-silica-lavender-16l.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Plovet Premium Podestýlka Silica Original 16L",
@@ -470,7 +470,7 @@
       "url": "https://www.krmivo-platinum.cz/plovet-premium-podestylka-silica-original-16l-p5655/?cid=75",
       "image": "https://cdn.krmivo-platinum.cz/images/0/9c195f0764e5b9c3/1/plovet-premium-podestylka-silica-original-16l.png?hash=803428813",
       "category": "Pro kočky",
-      "scrapedAt": "2026-07-27T10:02:51.647Z"
+      "scrapedAt": "2026-07-28T08:45:39.697Z"
     },
     {
       "name": "Platinum VETACTIVE Sensitive",
@@ -479,7 +479,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-sensitive-p4839/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/ba01de55a8aa32d6/1/platinum-vetactive-sensitive.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.712Z"
     },
     {
       "name": "Platinum VETACTIVE Senior",
@@ -488,7 +488,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-senior-p4106/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/016e3a3b1e8a2f7f/1/platinum-vetactive-senior.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.712Z"
     },
     {
       "name": "Platinum VETACTIVE Light",
@@ -497,7 +497,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-light-p4105/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/6eb08c992bc7a239/1/platinum-vetactive-light.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.712Z"
     },
     {
       "name": "Platinum VETACTIVE Hypoallergenic",
@@ -506,7 +506,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-vetactive-hypoallergenic-p4059/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/85984093f4650819/1/platinum-vetactive-hypoallergenic.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.712Z"
     },
     {
       "name": "Platinum Hojivý balzám",
@@ -515,7 +515,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-hojivy-balzam-p278/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/2f086a89c8cced34/1/platinum-hojivy-balzam.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.713Z"
     },
     {
       "name": "Platinum ORAL CLEAN & CARE Classic",
@@ -524,7 +524,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-oral-clean-care-classic-p5042/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/f864874c9f249659/1/platinum-oral-clean-care-classic.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.713Z"
     },
     {
       "name": "Platinum ORAL CLEAN & CARE Forte",
@@ -533,7 +533,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-oral-clean-care-forte-p5041/?cid=100",
       "image": "https://cdn.krmivo-platinum.cz/images/0/482397b38d52a7e1/1/platinum-oral-clean-care-forte.png?hash=803428813",
       "category": "VETACTIVE",
-      "scrapedAt": "2026-07-27T10:03:07.149Z"
+      "scrapedAt": "2026-07-28T08:45:54.713Z"
     },
     {
       "name": "Platinum MeatCrisp Adult Chicken - Kuře pro dospělé kočky",
@@ -542,7 +542,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-adult-chicken-kure-pro-dospele-kocky-p4056/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/6f9a56b79fc880ae/1/platinum-meatcrisp-adult-chicken-kure-pro-dospele-kocky.jpg?hash=803428813",
       "category": "MeatCrisp Chicken",
-      "scrapedAt": "2026-07-27T10:03:21.524Z"
+      "scrapedAt": "2026-07-28T08:46:09.039Z"
     },
     {
       "name": "Platinum MeatCrisp Sterilised Chicken - Kuře pro kastrované kočky",
@@ -551,7 +551,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-sterilised-chicken-kure-pro-kastrovane-kocky-p4058/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/e1c1140e0c5095d2/1/platinum-meatcrisp-sterilised-chicken-kure-pro-kastrovane-kocky.jpg?hash=803428813",
       "category": "MeatCrisp Chicken",
-      "scrapedAt": "2026-07-27T10:03:21.524Z"
+      "scrapedAt": "2026-07-28T08:46:09.039Z"
     },
     {
       "name": "Platinum MeatCrisp Kitten Chicken - Kuře pro koťata",
@@ -560,7 +560,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-kitten-chicken-kure-pro-kotata-p4057/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/82264cea320de155/1/platinum-meatcrisp-kitten-chicken-kure-pro-kotata.jpg?hash=803428813",
       "category": "MeatCrisp Chicken",
-      "scrapedAt": "2026-07-27T10:03:21.524Z"
+      "scrapedAt": "2026-07-28T08:46:09.040Z"
     },
     {
       "name": "Platinum MeatCrisp Adult Fish - Ryba pro dospělé kočky",
@@ -569,7 +569,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-adult-fish-ryba-pro-dospele-kocky-p4633/?cid=150",
       "image": "https://cdn.krmivo-platinum.cz/images/0/bd167267bc00d9ae/1/platinum-meatcrisp-adult-fish-ryba-pro-dospele-kocky.jpg?hash=803428813",
       "category": "MeatCrisp Fish",
-      "scrapedAt": "2026-07-27T10:03:35.947Z"
+      "scrapedAt": "2026-07-28T08:46:23.406Z"
     },
     {
       "name": "Platinum MeatCrisp Sterilised Fish - Ryba pro kastrované kočky",
@@ -578,7 +578,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-sterilised-fish-ryba-pro-kastrovane-kocky-p4635/?cid=150",
       "image": "https://cdn.krmivo-platinum.cz/images/0/3f40ca13dc2df006/1/platinum-meatcrisp-sterilised-fish-ryba-pro-kastrovane-kocky.jpg?hash=803428813",
       "category": "MeatCrisp Fish",
-      "scrapedAt": "2026-07-27T10:03:35.947Z"
+      "scrapedAt": "2026-07-28T08:46:23.406Z"
     },
     {
       "name": "Platinum MeatCrisp Kitten Fish - Ryba pro koťata",
@@ -587,7 +587,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-meatcrisp-kitten-fish-ryba-pro-kotata-p4634/?cid=150",
       "image": "https://cdn.krmivo-platinum.cz/images/0/8e44df18ef0c3350/1/platinum-meatcrisp-kitten-fish-ryba-pro-kotata.jpg?hash=803428813",
       "category": "MeatCrisp Fish",
-      "scrapedAt": "2026-07-27T10:03:35.947Z"
+      "scrapedAt": "2026-07-28T08:46:23.406Z"
     },
     {
       "name": "Platinum ponožky - klasické - ŠEDÁ",
@@ -596,7 +596,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-ponozky-klasicke-seda-p4605/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/bb9d09089f6ac081/1/platinum-ponozky-klasicke-seda.jpg?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum ponožky - klasické - ZELENÁ",
@@ -605,7 +605,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-ponozky-klasicke-zelena-p4606/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/390e5301ffca1a77/1/platinum-ponozky-klasicke-zelena.jpg?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum ponožky - kotníčkové - ZELENÁ",
@@ -614,7 +614,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-ponozky-kotnickove-zelena-p4607/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/a409c2de65d205c8/1/platinum-ponozky-kotnickove-zelena.jpg?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum ponožky - kotníčkové - ŠEDÁ",
@@ -623,7 +623,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-ponozky-kotnickove-seda-p4608/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/cb897d1f9587e7e9/1/platinum-ponozky-kotnickove-seda.png?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum čepice",
@@ -632,7 +632,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-cepice-p4302/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/098a09c5713e7b2e/1/platinum-cepice.png?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum čepice s UV filtrem",
@@ -641,7 +641,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-cepice-p4303/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/098a09c5713e7b2e/1/platinum-cepice-s-uv-filtrem.png?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     },
     {
       "name": "Platinum rukavice",
@@ -650,7 +650,7 @@
       "url": "https://www.krmivo-platinum.cz/platinum-rukavice-p4305/",
       "image": "https://cdn.krmivo-platinum.cz/images/0/087b1cedc45bd387/1/platinum-rukavice.png?hash=803428813",
       "category": "Reklamní předměty",
-      "scrapedAt": "2026-07-27T10:03:50.234Z"
+      "scrapedAt": "2026-07-28T08:46:37.677Z"
     }
   ]
 }
