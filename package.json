@@ -4,7 +4,9 @@
   "description": "Scraper pro krmivo-platinum.cz",
   "main": "scraper.js",
   "scripts": {
-    "start": "node scraper.js"
+    "start": "node scraper.js",
+    "scrape:review": "node platinum-review.js",
+    "test:review": "node --test test/*.test.js"
   },
   "dependencies": {
     "playwright": "^1.40.0"

@@ -1,4 +1,4 @@
-name: Scrape Platinum Products
+name: Platinum hardened review
 
 on:
   schedule:
@@ -6,38 +6,126 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: platinum-hardened-review
+  cancel-in-progress: false
 
 jobs:
-  scrape:
+  review:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 90
+    env:
+      PLATINUM_REVIEW_OUTPUT_ROOT: ${{ runner.temp }}/platinum-review
+
     steps:
-      - name: Checkout code
+      - name: Checkout triggering revision
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
-      
-      - name: Install Playwright browsers
-        run: npx playwright install chromium
-      
-      - name: Run scraper
-        run: node scraper.js
-      
-      - name: Commit results
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run hardened regression tests
+        run: npm run test:review
+
+      - name: Prepare create-only review directory
+        shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add products.json
-          git diff --staged --quiet || git commit -m "Update products $(date +%Y-%m-%d)"
-          git push
+          generated_at="$(date -u +'%Y-%m-%dT%H:%M:%S.000Z')"
+          review_id="platinum-live-$(printf '%s' "$generated_at" | tr -d ':-.')"
+          output_dir="$PLATINUM_REVIEW_OUTPUT_ROOT/$review_id"
+          mkdir -p "$PLATINUM_REVIEW_OUTPUT_ROOT"
+          {
+            echo "PLATINUM_REVIEW_GENERATED_AT=$generated_at"
+            echo "PLATINUM_REVIEW_RUN_ID=$review_id"
+            echo "PLATINUM_REVIEW_OUTPUT_DIR=$output_dir"
+          } >> "$GITHUB_ENV"
+
+      - name: Run hardened Platinum review
+        run: >-
+          npm run scrape:review --
+          --output-dir "$PLATINUM_REVIEW_OUTPUT_DIR"
+          --generated-at "$PLATINUM_REVIEW_GENERATED_AT"
+          --run-id "$PLATINUM_REVIEW_RUN_ID"
+
+      - name: Require exact PASS artifact contract
+        shell: bash
+        run: |
+          node <<'NODE'
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const outputDir = process.env.PLATINUM_REVIEW_OUTPUT_DIR;
+          const expectedFiles = [
+            'platinum-provenance.json',
+            'platinum-raw-validation.json',
+            'platinum-raw.json',
+          ];
+          const actualFiles = fs.readdirSync(outputDir).sort();
+          if (JSON.stringify(actualFiles) !== JSON.stringify(expectedFiles)) {
+            throw new Error(`Unexpected review artifact set: ${actualFiles.join(', ')}`);
+          }
+
+          const readJson = name => JSON.parse(fs.readFileSync(path.join(outputDir, name), 'utf8'));
+          const rawPath = path.join(outputDir, 'platinum-raw.json');
+          const rawBytes = fs.readFileSync(rawPath);
+          const raw = JSON.parse(rawBytes);
+          const provenance = readJson('platinum-provenance.json');
+          const validation = readJson('platinum-raw-validation.json');
+          const rawSha256 = crypto.createHash('sha256').update(rawBytes).digest('hex');
+
+          if (validation.passed !== true
+              || validation.validator !== 'platinum-live-review'
+              || validation.counts?.total !== 90
+              || validation.counts?.dog !== 60
+              || validation.counts?.cat !== 30
+              || validation.counts?.uniqueUrlSize !== 90
+              || validation.counts?.multipacks !== 49) {
+            throw new Error('Hardened Platinum validation is not an exact PASS');
+          }
+          if (raw.reviewOnly !== true
+              || provenance.reviewOnly !== true
+              || provenance.raw?.sha256 !== rawSha256
+              || provenance.raw?.size !== rawBytes.length) {
+            throw new Error('Raw/provenance review-only binding failed');
+          }
+          if (Object.values(provenance.remoteActions || {}).some(Boolean)) {
+            throw new Error('Review provenance declares a forbidden remote action');
+          }
+          NODE
+
+      - name: Require unchanged repository
+        shell: bash
+        run: test -z "$(git status --porcelain)"
+
+      - name: Upload PASS review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: platinum-review-pass-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PLATINUM_REVIEW_OUTPUT_DIR }}/*.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload sanitized failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: platinum-review-failure-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PLATINUM_REVIEW_OUTPUT_ROOT }}/**/platinum-failure.json
+          if-no-files-found: ignore
+          retention-days: 7
