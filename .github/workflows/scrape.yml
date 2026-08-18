@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           generated_at="$(date -u +'%Y-%m-%dT%H:%M:%S.000Z')"
-          review_id="platinum-live-$(printf '%s' "$generated_at" | tr -d ':-.')"
+          review_id="platinum-live-$(printf '%s' "$generated_at" | tr -d ':.-')"
           output_root="${RUNNER_TEMP}/platinum-review"
           output_dir="$output_root/$review_id"
           mkdir -p "$output_root"
