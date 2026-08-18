@@ -16,8 +16,6 @@ jobs:
   review:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    env:
-      PLATINUM_REVIEW_OUTPUT_ROOT: ${{ runner.temp }}/platinum-review
 
     steps:
       - name: Checkout triggering revision
@@ -47,9 +45,11 @@ jobs:
         run: |
           generated_at="$(date -u +'%Y-%m-%dT%H:%M:%S.000Z')"
           review_id="platinum-live-$(printf '%s' "$generated_at" | tr -d ':-.')"
-          output_dir="$PLATINUM_REVIEW_OUTPUT_ROOT/$review_id"
-          mkdir -p "$PLATINUM_REVIEW_OUTPUT_ROOT"
+          output_root="${RUNNER_TEMP}/platinum-review"
+          output_dir="$output_root/$review_id"
+          mkdir -p "$output_root"
           {
+            echo "PLATINUM_REVIEW_OUTPUT_ROOT=$output_root"
             echo "PLATINUM_REVIEW_GENERATED_AT=$generated_at"
             echo "PLATINUM_REVIEW_RUN_ID=$review_id"
             echo "PLATINUM_REVIEW_OUTPUT_DIR=$output_dir"
@@ -126,6 +126,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: platinum-review-failure-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ env.PLATINUM_REVIEW_OUTPUT_ROOT }}/**/platinum-failure.json
+          path: ${{ runner.temp }}/platinum-review/**/platinum-failure.json
           if-no-files-found: ignore
           retention-days: 7
