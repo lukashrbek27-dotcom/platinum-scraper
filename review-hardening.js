@@ -389,6 +389,57 @@ function validateReviewSnapshot(raw, provenance, rawBytes) {
   };
 }
 
+function validateManagedPriceReviewSnapshot(raw, provenance, rawBytes) {
+  const errors = [];
+  const add = (code, details = null) => errors.push({ code, details });
+  const products = Array.isArray(raw?.products) ? raw.products : [];
+  if (raw?.source !== SOURCE) add('invalid_source');
+  if (raw?.reviewOnly !== true) add('not_review_only');
+  try { assertCanonicalIso(raw?.generatedAt, 'generatedAt'); } catch { add('invalid_generated_at'); }
+  try { assertCanonicalIso(raw?.scrapedAt, 'scrapedAt'); } catch { add('invalid_scraped_at'); }
+  if (raw?.totalProducts !== products.length) add('declared_total_mismatch');
+  const names = Array.isArray(raw?.categoryNames) ? raw.categoryNames : [];
+  if (names.length !== EXPECTED_CATEGORIES.length || new Set(names).size !== names.length
+      || EXPECTED_CATEGORIES.some(expected => !names.includes(expected.name))) add('category_contract_mismatch');
+  if (raw?.categories !== EXPECTED_CATEGORIES.length) add('category_count_mismatch');
+  const dog = products.filter(product => product?.animalType === 'dog').length;
+  const cat = products.filter(product => product?.animalType === 'cat').length;
+  const unknownSpecies = products.length - dog - cat;
+  if (unknownSpecies) add('unexpected_species', unknownSpecies);
+  const identities = new Set();
+  let multipacks = 0;
+  for (const [index, product] of products.entries()) {
+    if (!product?.url) add('missing_url', index);
+    if (!product?.size) add('missing_size', index);
+    if (!product?.animalType) add('missing_species', index);
+    if (/^\s*\d+\s*[x×]\s*\d/iu.test(String(product?.size || ''))) multipacks += 1;
+    try {
+      const identity = normalizedSourceIdentity(product);
+      if (identities.has(identity)) add('duplicate_source_identity', identity);
+      identities.add(identity);
+    } catch (error) { add(error.message, index); }
+  }
+  const stats = raw?.runStats;
+  if (!stats || stats.categoryRequests !== EXPECTED_CATEGORIES.length || stats.categorySuccesses !== EXPECTED_CATEGORIES.length
+      || stats.categoryErrors !== 0) add('incomplete_category_run');
+  if (!stats || !Number.isInteger(stats.detailRequests) || stats.detailRequests <= 0
+      || stats.detailSuccesses !== stats.detailRequests || stats.detailErrors !== 0) add('incomplete_detail_run');
+  if (!provenance || provenance.raw?.sha256 !== sha256(rawBytes) || provenance.raw?.size !== rawBytes.length) add('raw_provenance_mismatch');
+  if (provenance?.runId !== raw?.runId || provenance?.generatedAt !== raw?.generatedAt) add('run_provenance_mismatch');
+  return {
+    schemaVersion: 1,
+    validator: 'platinum-managed-price-review',
+    generatedAt: raw?.generatedAt,
+    runId: raw?.runId,
+    passed: errors.length === 0,
+    boundary: 'scraper_health_only_managed_coverage_validated_separately',
+    counts: { total: products.length, dog, cat, unknownSpecies, uniqueUrlSize: identities.size, multipacks },
+    runCompleteness: stats || null,
+    raw: { sha256: sha256(rawBytes), size: rawBytes.length },
+    errors,
+  };
+}
+
 function safeFailure(error, generatedAt, runId) {
   const diagnostic = sanitizeDiagnostic(error);
   return {
@@ -429,6 +480,7 @@ module.exports = {
   sha256,
   validateCategoryExtraction,
   validateDetailExtraction,
+  validateManagedPriceReviewSnapshot,
   validateReviewSnapshot,
   writeCreateOnly,
   writeFileGroupCreateOnly,

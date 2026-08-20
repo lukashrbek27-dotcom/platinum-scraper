@@ -25,6 +25,25 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
+      - name: Checkout authoritative application catalog
+        uses: actions/checkout@v4
+        with:
+          repository: lukashrbek27-dotcom/mazlicek-plus
+          ref: 467a67fd0afca9644fabd8a761c5c0d1efe3b5b0
+          token: ${{ secrets.PLATINUM_CATALOG_READ_TOKEN }}
+          persist-credentials: false
+          path: app-catalog
+          sparse-checkout: |
+            src/data/partner-foods.json
+          sparse-checkout-cone-mode: false
+
+      - name: Verify pinned catalog checkout
+        shell: bash
+        run: |
+          expected='467a67fd0afca9644fabd8a761c5c0d1efe3b5b0'
+          actual="$(git -C app-catalog rev-parse HEAD)"
+          test "$actual" = "$expected"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -55,12 +74,66 @@ jobs:
             echo "PLATINUM_REVIEW_OUTPUT_DIR=$output_dir"
           } >> "$GITHUB_ENV"
 
+      - name: Read current production overlay
+        shell: bash
+        run: |
+          input_root="${RUNNER_TEMP}/platinum-managed-input-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          mkdir "$input_root"
+          overlay_path="$input_root/current-production-overlay.json"
+          curl --proto '=https' --tlsv1.2 --fail --silent --show-error --max-time 30 \
+            --output "$overlay_path" \
+            'https://mazlicekplus.cz/api/catalog/price-overlay'
+          catalog_path="${GITHUB_WORKSPACE}/app-catalog/src/data/partner-foods.json"
+          test -f "$catalog_path"
+          {
+            echo "PLATINUM_CATALOG_PATH=$catalog_path"
+            echo "PLATINUM_CATALOG_COMMIT=467a67fd0afca9644fabd8a761c5c0d1efe3b5b0"
+            echo "PLATINUM_CATALOG_SHA256=$(sha256sum "$catalog_path" | cut -d ' ' -f 1)"
+            echo "PLATINUM_CURRENT_OVERLAY_PATH=$overlay_path"
+            echo "PLATINUM_CURRENT_OVERLAY_SHA256=$(sha256sum "$overlay_path" | cut -d ' ' -f 1)"
+          } >> "$GITHUB_ENV"
+
       - name: Run hardened Platinum review
         run: >-
           npm run scrape:review --
           --output-dir "$PLATINUM_REVIEW_OUTPUT_DIR"
           --generated-at "$PLATINUM_REVIEW_GENERATED_AT"
           --run-id "$PLATINUM_REVIEW_RUN_ID"
+          --validation-profile managed-price
+
+      - name: Build and validate review-only managed-price candidate
+        run: >-
+          node platinum-managed-price-validation.js
+          --output-dir "$PLATINUM_REVIEW_OUTPUT_DIR"
+          --raw "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-raw.json"
+          --review-provenance "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-provenance.json"
+          --review-validation "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-raw-validation.json"
+          --catalog "$PLATINUM_CATALOG_PATH"
+          --catalog-commit "$PLATINUM_CATALOG_COMMIT"
+          --catalog-sha256 "$PLATINUM_CATALOG_SHA256"
+          --current-overlay "$PLATINUM_CURRENT_OVERLAY_PATH"
+          --current-overlay-sha256 "$PLATINUM_CURRENT_OVERLAY_SHA256"
+          --generated-at "$PLATINUM_REVIEW_GENERATED_AT"
+
+      - name: Bind managed-price provenance
+        run: >-
+          node platinum-managed-price-provenance.js
+          --output-dir "$PLATINUM_REVIEW_OUTPUT_DIR"
+          --generated-at "$PLATINUM_REVIEW_GENERATED_AT"
+          --github-run-id "${{ github.run_id }}"
+          --github-run-attempt "${{ github.run_attempt }}"
+          --repository "${{ github.repository }}"
+          --workflow-path ".github/workflows/scrape.yml"
+          --workflow-ref "${{ github.workflow_ref }}"
+          --producer-commit "${{ github.sha }}"
+          --catalog-commit "$PLATINUM_CATALOG_COMMIT"
+          --raw "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-raw.json"
+          --review-provenance "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-provenance.json"
+          --review-validation "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-raw-validation.json"
+          --candidate "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-managed-price-candidate.json"
+          --validation "$PLATINUM_REVIEW_OUTPUT_DIR/platinum-managed-price-validation.json"
+          --catalog "$PLATINUM_CATALOG_PATH"
+          --current-overlay "$PLATINUM_CURRENT_OVERLAY_PATH"
 
       - name: Require exact PASS artifact contract
         shell: bash
@@ -72,6 +145,9 @@ jobs:
 
           const outputDir = process.env.PLATINUM_REVIEW_OUTPUT_DIR;
           const expectedFiles = [
+            'platinum-managed-price-candidate.json',
+            'platinum-managed-price-provenance.json',
+            'platinum-managed-price-validation.json',
             'platinum-provenance.json',
             'platinum-raw-validation.json',
             'platinum-raw.json',
@@ -87,16 +163,14 @@ jobs:
           const raw = JSON.parse(rawBytes);
           const provenance = readJson('platinum-provenance.json');
           const validation = readJson('platinum-raw-validation.json');
+          const managedCandidate = readJson('platinum-managed-price-candidate.json');
+          const managedValidation = readJson('platinum-managed-price-validation.json');
+          const managedProvenance = readJson('platinum-managed-price-provenance.json');
           const rawSha256 = crypto.createHash('sha256').update(rawBytes).digest('hex');
 
           if (validation.passed !== true
-              || validation.validator !== 'platinum-live-review'
-              || validation.counts?.total !== 90
-              || validation.counts?.dog !== 60
-              || validation.counts?.cat !== 30
-              || validation.counts?.uniqueUrlSize !== 90
-              || validation.counts?.multipacks !== 49) {
-            throw new Error('Hardened Platinum validation is not an exact PASS');
+              || validation.validator !== 'platinum-managed-price-review') {
+            throw new Error('Hardened Platinum technical validation is not a PASS');
           }
           if (raw.reviewOnly !== true
               || provenance.reviewOnly !== true
@@ -104,14 +178,39 @@ jobs:
               || provenance.raw?.size !== rawBytes.length) {
             throw new Error('Raw/provenance review-only binding failed');
           }
+          if (managedValidation.passed !== true
+              || managedValidation.managedContract?.total !== 90
+              || managedValidation.managedContract?.exactSafe !== 90
+              || managedValidation.managedContract?.unresolved !== 0
+              || managedValidation.managedContract?.coverage !== '90/90'
+              || managedValidation.managedContract?.multipacks !== 49
+              || managedCandidate.offers?.length !== 90
+              || managedProvenance.verdict !== 'PASS') {
+            throw new Error('Managed Platinum validation is not an exact 90/90 PASS');
+          }
+          const managedFiles = {
+            candidate: 'platinum-managed-price-candidate.json',
+            validation: 'platinum-managed-price-validation.json',
+          };
+          for (const [role, file] of Object.entries(managedFiles)) {
+            const bytes = fs.readFileSync(path.join(outputDir, file));
+            const binding = managedProvenance.artifacts?.[role];
+            if (binding?.sha256 !== crypto.createHash('sha256').update(bytes).digest('hex') || binding?.size !== bytes.length) {
+              throw new Error(`Managed provenance binding failed for ${role}`);
+            }
+          }
           if (Object.values(provenance.remoteActions || {}).some(Boolean)) {
             throw new Error('Review provenance declares a forbidden remote action');
+          }
+          if ([managedCandidate, managedValidation, managedProvenance]
+              .some(item => Object.values(item.remoteActions || {}).some(Boolean))) {
+            throw new Error('Managed artifacts declare a forbidden remote action');
           }
           NODE
 
       - name: Require unchanged repository
         shell: bash
-        run: test -z "$(git status --porcelain)"
+        run: test -z "$(git status --porcelain --untracked-files=no)"
 
       - name: Upload PASS review artifacts
         uses: actions/upload-artifact@v4

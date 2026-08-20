@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node scraper.js",
     "scrape:review": "node platinum-review.js",
+    "test": "npm run test:review",
     "test:review": "node --test test/*.test.js"
   },
   "dependencies": {

@@ -15,6 +15,7 @@ const {
   sanitizeText,
   sha256,
   validateReviewSnapshot,
+  validateManagedPriceReviewSnapshot,
   writeCreateOnly,
   writeFileGroupCreateOnly,
 } = require('./review-hardening');
@@ -53,7 +54,7 @@ function fileMetadata(filePath, role) {
   return { role, path: filePath, size: bytes.length, sha256: sha256(bytes) };
 }
 
-async function runReview({ outputDir, generatedAt, runId, scrapeRunner = scrape, clock = () => new Date(), sourceRoot = __dirname, groupWriter = writeFileGroupCreateOnly }) {
+async function runReview({ outputDir, generatedAt, runId, validationProfile = 'full-review', scrapeRunner = scrape, clock = () => new Date(), sourceRoot = __dirname, groupWriter = writeFileGroupCreateOnly }) {
   assertCanonicalIso(generatedAt, 'generatedAt');
   safeRunId(runId);
   if (path.basename(path.resolve(outputDir)) !== runId) throw new Error('--output-dir basename must equal --run-id');
@@ -98,7 +99,10 @@ async function runReview({ outputDir, generatedAt, runId, scrapeRunner = scrape,
       remoteActions: { publish: false, upload: false, deploy: false, scheduler: false },
     };
     const provenanceBytes = Buffer.from(canonicalJson(provenance), 'utf8');
-    const validation = validateReviewSnapshot(raw, provenance, rawBytes);
+    if (!['full-review', 'managed-price'].includes(validationProfile)) throw new Error('Unsupported validation profile');
+    const validation = validationProfile === 'managed-price'
+      ? validateManagedPriceReviewSnapshot(raw, provenance, rawBytes)
+      : validateReviewSnapshot(raw, provenance, rawBytes);
     validation.provenance = { file: 'platinum-provenance.json', size: provenanceBytes.length, sha256: sha256(provenanceBytes) };
     if (!validation.passed) {
       const error = new Error(`Platinum live review validation failed: ${validation.errors.map(item => item.code).join(', ')}`);
@@ -133,7 +137,8 @@ async function main(argv = process.argv.slice(2), dependencies = {}) {
   assertSupportedOutputRoot(outputDir);
   const generatedAt = assertCanonicalIso(required(args, 'generated-at'), 'generated-at');
   const runId = args.get('run-id') || path.basename(outputDir);
-  return runReview({ outputDir, generatedAt, runId, ...dependencies });
+  const validationProfile = args.get('validation-profile') || 'full-review';
+  return runReview({ outputDir, generatedAt, runId, validationProfile, ...dependencies });
 }
 
 if (require.main === module) {
