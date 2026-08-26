@@ -95,25 +95,13 @@ function parseUnitCzkMinor(value) {
   return minor;
 }
 
-function normalizeRawPrice(value, field, multipackCount) {
+function normalizeRawPrice(value, field) {
   const unitMinor = parseUnitCzkMinor(value);
   if (unitMinor === null) {
     if (typeof value === 'string' && /\/\s*\S/u.test(value)) throw new Error('unsupported_price_unit');
     return { value: parseCzk(value), normalization: null };
   }
-  if (!Number.isSafeInteger(multipackCount) || multipackCount <= 1) throw new Error('unit_price_requires_explicit_multipack');
-  const totalMinor = unitMinor * multipackCount;
-  if (!Number.isSafeInteger(totalMinor) || totalMinor <= 0 || totalMinor > MAXIMUM_PRICE_CZK * 100) throw new Error('unit_price_total_outside_guard_range');
-  return {
-    value: totalMinor / 100,
-    normalization: {
-      field,
-      reason: 'czk_per_piece_times_explicit_multipack_count',
-      unitPrice: unitMinor / 100,
-      multipackCount,
-      totalPrice: totalMinor / 100,
-    },
-  };
+  throw new Error(`${field}_must_use_explicit_total_price`);
 }
 
 function validatePriceState(state, { maximum = MAXIMUM_PRICE_CZK, minimum = MINIMUM_PRICE_CZK } = {}) {
@@ -129,17 +117,35 @@ function validatePriceState(state, { maximum = MAXIMUM_PRICE_CZK, minimum = MINI
 }
 
 function priceStateFromRaw(raw) {
-  const requiresMultipack = parseUnitCzkMinor(raw?.price) !== null
-    || parseUnitCzkMinor(raw?.salePrice) !== null
-    || parseUnitCzkMinor(raw?.originalPrice) !== null;
-  const multipackCount = requiresMultipack ? parseExplicitMultipackCount(raw?.size) : null;
-  const price = normalizeRawPrice(raw?.price, 'price', multipackCount);
+  const multipackCount = parseExplicitMultipackCount(raw?.size);
+  if (multipackCount !== null) {
+    const unitMinor = parseUnitCzkMinor(raw?.multipackUnitPrice);
+    if (unitMinor === null) throw new Error('missing_explicit_multipack_unit_price');
+    if (raw?.multipackTotalPrice == null) throw new Error('missing_explicit_multipack_total_price');
+    const total = normalizeRawPrice(raw.multipackTotalPrice, 'multipackTotalPrice');
+    const price = normalizeRawPrice(raw?.price, 'price');
+    if (price.value !== total.value) throw new Error('multipack_price_total_mismatch');
+    const normalization = {
+      field: 'price', reason: 'explicit_bundle_total_price', unitPrice: unitMinor / 100,
+      multipackCount, totalPrice: total.value, unitPriceTimesCount: unitMinor * multipackCount / 100,
+      roundingDelta: total.value - unitMinor * multipackCount / 100,
+    };
+    if (raw?.salePrice == null && raw?.originalPrice == null) {
+      return { state: { price: total.value, salePrice: null, originalPrice: null }, normalizations: [normalization] };
+    }
+    if (raw?.salePrice == null || raw?.originalPrice == null) throw new Error('incomplete_sale_pair');
+    const sale = normalizeRawPrice(raw.salePrice, 'salePrice');
+    const original = normalizeRawPrice(raw.originalPrice, 'originalPrice');
+    if (sale.value !== total.value) throw new Error('multipack_sale_total_mismatch');
+    return { state: { price: total.value, salePrice: total.value, originalPrice: original.value }, normalizations: [normalization] };
+  }
+  const price = normalizeRawPrice(raw?.price, 'price');
   if (raw?.salePrice == null && raw?.originalPrice == null) {
     return { state: { price: price.value, salePrice: null, originalPrice: null }, normalizations: price.normalization ? [price.normalization] : [] };
   }
   if (raw?.salePrice == null || raw?.originalPrice == null) throw new Error('incomplete_sale_pair');
-  const sale = normalizeRawPrice(raw.salePrice, 'salePrice', multipackCount);
-  const original = normalizeRawPrice(raw.originalPrice, 'originalPrice', multipackCount);
+  const sale = normalizeRawPrice(raw.salePrice, 'salePrice');
+  const original = normalizeRawPrice(raw.originalPrice, 'originalPrice');
   return {
     state: { price: price.value, salePrice: sale.value, originalPrice: original.value },
     normalizations: [price.normalization, sale.normalization, original.normalization].filter(Boolean),

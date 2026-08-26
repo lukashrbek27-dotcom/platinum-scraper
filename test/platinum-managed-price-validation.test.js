@@ -11,6 +11,7 @@ const {
   main,
   parseExplicitMultipackCount,
   parseSizeKg,
+  priceStateFromRaw,
 } = require('../platinum-managed-price-validation');
 
 const GENERATED_AT = '2026-08-20T06:00:00.000Z';
@@ -19,7 +20,7 @@ const CATALOG_COMMIT = '4'.repeat(40);
 function rowState(index) {
   if (index < 49) {
     const unit = 100 + index;
-    return { size: `2 x ${index + 1} g`, sizeKg: Number((2 * (index + 1) / 1000).toFixed(3)), price: `${unit} Kč / ks`, totalPrice: unit * 2 };
+    return { size: `2 x ${index + 1} g`, sizeKg: Number((2 * (index + 1) / 1000).toFixed(3)), unitPrice: `${unit} Kč / ks`, totalPrice: unit * 2 };
   }
   const price = 100 + index;
   return { size: `${index + 1} kg`, sizeKg: index + 1, price: `${price} Kč`, totalPrice: price };
@@ -35,9 +36,10 @@ function fixture() {
       name: `Food ${index}`,
       url,
       size: state.size,
-      price: state.price,
+      price: `${state.totalPrice} Kč`,
       salePrice: null,
       originalPrice: null,
+      ...(state.unitPrice ? { multipackUnitPrice: state.unitPrice, multipackTotalPrice: `${state.totalPrice} Kč` } : {}),
       stock: 'Skladem',
       animalType: index < 60 ? 'dog' : 'cat',
     });
@@ -97,6 +99,26 @@ test('multipack parsing uses only an explicit count and normalized total packing
   assert.equal(parseSizeKg('12 × 100 g'), 1.2);
   assert.equal(parseExplicitMultipackCount('1.2 kg'), null);
   assert.throws(() => parseExplicitMultipackCount('1 x 100 g'), /multipack_count/u);
+});
+
+test('multipacks use the explicit final bundle total and retain unit-price rounding evidence', () => {
+  for (const [size, unit, total] of [
+    ['3 x 5 kg', '747 Kč / ks', 2242],
+    ['3 x 5 kg', '818 Kč / ks', 2453],
+    ['6 x 5 kg', '790 Kč / ks', 4739],
+    ['3 x 900 g', '250 Kč / ks', 751],
+    ['6 x 900 g', '237 Kč / ks', 1421],
+    ['2 x 3 kg', '697 Kč / ks', 1393],
+  ]) {
+    const parsed = priceStateFromRaw({ size, price: `${total} Kč`, salePrice: `${total} Kč`, originalPrice: `${total + 100} Kč`, multipackUnitPrice: unit, multipackTotalPrice: `${total} Kč` });
+    assert.equal(parsed.state.price, total);
+    assert.equal(parsed.state.salePrice, total);
+    assert.equal(parsed.normalizations[0].reason, 'explicit_bundle_total_price');
+  }
+});
+
+test('multipack without an explicit final bundle total fails closed', () => {
+  assert.throws(() => priceStateFromRaw({ size: '3 x 5 kg', price: '747 Kč / ks', salePrice: '747 Kč / ks', originalPrice: '2548 Kč', multipackUnitPrice: '747 Kč / ks' }), /missing_explicit_multipack_total_price/u);
 });
 
 test('an extra valid non-managed raw row is reported but does not block or auto-add', () => {

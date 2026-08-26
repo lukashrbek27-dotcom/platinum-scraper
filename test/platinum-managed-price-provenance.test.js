@@ -23,7 +23,10 @@ function fixture() {
     const sizeKg = multipack ? Number((2 * (index + 1) / 1000).toFixed(3)) : index + 1;
     const url = `https://www.krmivo-platinum.cz/product-${index}/`;
     const price = multipack ? unit * 2 : unit;
-    products.push({ url, size, price: multipack ? `${unit} Kč / ks` : `${unit} Kč`, salePrice: null, originalPrice: null, stock: 'Skladem' });
+    products.push({
+      url, size, price: `${price} Kč`, salePrice: null, originalPrice: null, stock: 'Skladem',
+      ...(multipack ? { multipackUnitPrice: `${unit} Kč / ks`, multipackTotalPrice: `${price} Kč` } : {}),
+    });
     catalog.push({ id: `platinum-food-${index}`, sizeKg, offers: [{ partner: 'Platinum', affiliateUrl: url, price, salePrice: null, originalPrice: null }] });
   }
   const rawBytes = Buffer.from(canonicalJson({ products }));

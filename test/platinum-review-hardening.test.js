@@ -76,11 +76,21 @@ function extractRows(rows) {
   global.document = { querySelectorAll: selector => { assert.equal(selector, '.item.variant'); return rows; } };
   try { return extractDetailVariants(); } finally { global.document = previousDocument; }
 }
-function variantRow(innerText, priceText = null) { return { innerText, querySelector: selector => { assert.equal(selector, '.price .value, .bs-priceLayout .value, .value'); return priceText == null ? null : { innerText: priceText }; } }; }
+function variantRow(innerText, priceText = null, selectors = {}) { return { innerText, querySelector: selector => {
+  if (Object.hasOwn(selectors, selector)) return { innerText: selectors[selector] };
+  assert.equal(selector, '.price .value, .bs-priceLayout .value, .value');
+  return priceText == null ? null : { innerText: priceText };
+} }; }
 test('diagnosed collapsed 1.5 kg offer is parsed from anchored size and semantic price value', () => {
   const extraction = extractRows([variantRow('1,5 kgpytel_51-5A273 Kč', '273 Kč')]);
   assert.deepEqual(extraction, { variants: [{ sizeText: '1,5 kg', priceText: '273 Kč', salePriceText: null, originalPriceText: null }], rowCount: 1, invalidRows: 0 });
   assert.equal(validateDetailExtraction(extraction, { name: 'Adult Chicken' }).length, 1);
+});
+test('multipack extraction retains the explicit final bundle total instead of the rounded per-piece label', () => {
+  const extraction = extractRows([variantRow('3 x 5 kg\nkompletsleva\n747 Kč / ks\nVTAL 15\n2 548 Kč\n2 242 Kč', null, {
+    '.pricePerPiece': '747 Kč / ks', '.price.primary.user .value': '2 242 Kč', '.price.primary.retail .value': '2 548 Kč',
+  })]);
+  assert.deepEqual(extraction, { variants: [{ sizeText: '3 x 5 kg', priceText: '2 242 Kč', salePriceText: '2 242 Kč', originalPriceText: '2 548 Kč', multipackUnitPriceText: '747 Kč / ks', multipackTotalPriceText: '2 242 Kč' }], rowCount: 1, invalidRows: 0 });
 });
 test('unknown collapsed row remains fatal', () => assert.throws(() => validateDetailExtraction(extractRows([variantRow('Choose a package', '273 Kč')]), { name: 'Food' }), /accounting/u));
 test('real collapsed row without price remains fatal', () => assert.throws(() => validateDetailExtraction(extractRows([variantRow('1,5 kgpytel_51-5A')]), { name: 'Food' }), /accounting/u));

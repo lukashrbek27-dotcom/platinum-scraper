@@ -47,6 +47,22 @@ function extractDetailVariants() {
             result.push({ sizeText, priceText: prices[0], salePriceText: null, originalPriceText: null });
         } else {
             // Dva řádky ceny = bundle sleva: vyšší je původní, nižší je akční
+            const isMultipack = /^\s*\d+\s*[x×]\s*\d/iu.test(sizeText);
+            if (isMultipack) {
+                const unitPriceText = row.querySelector('.pricePerPiece')?.innerText?.trim() || null;
+                const totalPriceText = row.querySelector('.price.primary.user .value')?.innerText?.trim() || null;
+                const originalPriceText = row.querySelector('.price.primary.retail .value')?.innerText?.trim() || null;
+                if (!unitPriceText || !totalPriceText || !originalPriceText) { invalidRows += 1; return; }
+                result.push({
+                    sizeText,
+                    priceText: totalPriceText,
+                    salePriceText: totalPriceText,
+                    originalPriceText,
+                    multipackUnitPriceText: unitPriceText,
+                    multipackTotalPriceText: totalPriceText,
+                });
+                return;
+            }
             const nums = prices.map(parseNum);
             const original = prices[nums.indexOf(Math.max(...nums))];
             const sale = prices[nums.indexOf(Math.min(...nums))];
@@ -235,6 +251,10 @@ async function scrape(options = {}) {
                         price: v.priceText,
                         salePrice: v.salePriceText,
                         originalPrice: v.originalPriceText,
+                        ...(v.multipackUnitPriceText ? {
+                            multipackUnitPrice: v.multipackUnitPriceText,
+                            multipackTotalPrice: v.multipackTotalPriceText,
+                        } : {}),
                         size: v.sizeText,
                         ...(reviewMode ? { scrapedAt: generatedAt } : {}),
                     });
